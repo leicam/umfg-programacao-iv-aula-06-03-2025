@@ -13,9 +13,10 @@ public sealed class VendaContext : DbContext
 
     public VendaContext(DbContextOptions<VendaContext> options) : base(options) 
     {
-        if (Database.GetPendingMigrations().Any())
-            Database.Migrate();
+        if (!Database.GetPendingMigrations().Any())
+            return;
 
+        Database.Migrate();
         VendaInitilizer.Initialize(this);
     }
 

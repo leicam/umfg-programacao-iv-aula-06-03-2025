@@ -2,7 +2,8 @@
 
 # Esta fase é usada durante a execução no VS no modo rápido (Padrão para a configuração de Depuração)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
+#remover comando para build
+#USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -30,5 +31,5 @@ COPY --from=publish /app/publish .
 # Substituir codigo abaixo pelo comando de execução utilizado na plataforma heroku
 #ENTRYPOINT ["dotnet", "ProgramacaoIV.Venda.Api.dll"]
 
-# Comando utilizado para rodar a aplicação no heroku
-CMD ASPNETCORE_URLS=http://*:$PORT ProgramacaoIV.Venda.Api.dll
+# Configura a porta do ASP.NET Core para usar o $PORT do Heroku e executa a API
+CMD ASPNETCORE_URLS="http://*:$PORT" dotnet ProgramacaoIV.Venda.Api.dll

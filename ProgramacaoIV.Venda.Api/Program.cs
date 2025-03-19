@@ -4,7 +4,8 @@ using ProgramacaoIV.Venda.Api.Context;
 using ProgramacaoIV.Venda.Api.Entidades;
 using static ProgramacaoIV.Venda.Api.DTO.TransacaoDTO;
 
-var connectionString = "Server=localhost;Port=3306;Database=umfg_venda_api;Uid=root;Pwd=root;";
+//var connectionString = "Server=localhost;Port=3306;Database=umfg_venda_api;Uid=root;Pwd=root;";
+var connectionString = "Server=mysql.uhserver.com;Port=3306;Database=umfg_venda;Uid=umfg;Pwd=Ads@2025;";
 
 var builder = WebApplication.CreateBuilder(args);
 
